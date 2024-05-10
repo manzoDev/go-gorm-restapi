@@ -13,6 +13,10 @@ func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetUserHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("get user"))
+}
+
+func PostUserHandler(w http.ResponseWriter, r *http.Request) {
 	var user models.User
 
 	json.NewDecoder(r.Body).Decode(&user)
@@ -26,11 +30,7 @@ func GetUserHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	json.NewEncoder(w).Encode(&user)
-	//w.Write([]byte("get user"))
-}
-
-func PostUserHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("post"))
+	//w.Write([]byte("post"))
 }
 
 func DeleteUserHandler(w http.ResponseWriter, r *http.Request) {
