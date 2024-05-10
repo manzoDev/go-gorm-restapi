@@ -2,8 +2,10 @@ package routes
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
+	"github.com/gorilla/mux"
 	"github.com/manzoDev/go-gorm-restapi/db"
 	"github.com/manzoDev/go-gorm-restapi/models"
 )
@@ -18,7 +20,10 @@ func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetUserHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("get user"))
+	params := mux.Vars(r)
+	fmt.Println(params)
+
+	json.NewEncoder(w).Encode(params)
 }
 
 func PostUserHandler(w http.ResponseWriter, r *http.Request) {
